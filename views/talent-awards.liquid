@@ -1,4 +1,18 @@
 {% render 'partials/head.liquid', title: 'awards' %}
 <h1>awards</h1>
 
+{% comment %} {{ nominations | json }} {% endcomment %}
+
+{% for nominee in nominations %}
+    <article>
+        <h2>
+            
+            {{nominee.title}}
+        </h2>
+        <p>
+            {{nominee.institution}}
+        </p>
+    </article>
+{% endfor %}
+
 {% render 'partials/foot.liquid' %}

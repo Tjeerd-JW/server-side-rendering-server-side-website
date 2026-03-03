@@ -6,7 +6,7 @@ import express from 'express'
 import { Liquid } from 'liquidjs';
 
 
-console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
+// console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
 // Doe een fetch naar de data die je nodig hebt
 // const apiResponse = await fetch('...')
 
@@ -21,8 +21,11 @@ console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
 const app = express()
 
+const apiURL = 'https://fdnd-agency.directus.app/items/adconnect_'
+
+
 // Maak werken met data uit formulieren iets prettiger
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 // Gebruik de map 'public' voor statische bestanden (resources zoals CSS, JavaScript, afbeeldingen en fonts)
 // Bestanden in deze map kunnen dus door de browser gebruikt worden
@@ -30,7 +33,7 @@ app.use(express.static('public'))
 
 // Stel Liquid in als 'view engine'
 const engine = new Liquid();
-app.engine('liquid', engine.express()); 
+app.engine('liquid', engine.express());
 
 // Stel de map met Liquid templates in
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
@@ -38,9 +41,9 @@ app.set('views', './views')
 
 // Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get('/', async function (request, response) {
-   // Render index.liquid uit de Views map
-   // Geef hier eventueel data aan mee
-   response.render('index.liquid')
+  // Render index.liquid uit de Views map
+  // Geef hier eventueel data aan mee
+  response.render('index.liquid')
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
@@ -63,7 +66,15 @@ app.listen(app.get('port'), function () {
 
 
 app.get('/talent-awards', async function (request, response) {
-  response.render('talent-awards.liquid')
+
+
+  const awardsResponse = await fetch(apiURL + 'nominations')
+  const awardsResponseJSON = await awardsResponse.json()
+  console.log(awardsResponseJSON)
+console.log('test')
+  response.render('talent-awards.liquid',{
+    nominations: awardsResponseJSON.data
+  })
 })
 
 app.get('/talent-awards/:name', async function (request, response) {
