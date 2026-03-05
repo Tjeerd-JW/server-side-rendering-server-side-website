@@ -1,5 +1,9 @@
 {% render 'partials/head.liquid', title: 'awards' %}
-<h1>awards</h1>
+
+{% include 'partials/article.liquid', style:'banner' %}
+
+{% include 'partials/article.liquid', style:'img-left' %}
+
 
 {% comment %} {{ nominations | json }} {% endcomment %}
 
