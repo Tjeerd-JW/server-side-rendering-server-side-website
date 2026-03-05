@@ -31,4 +31,15 @@ html {
     --color-neutral-700: hsl(213, 8%, 84%);
     --color-neutral-800: hsl(0, 0%, 98%);
 
+
+    /* styling */
+
+    --button-radius: 15px;
+    --img-radius: 1em 1em 0 0;
+
+    /* text */
+    font-family: sans-serif;
+
 }
+
+

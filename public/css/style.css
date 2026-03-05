@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-primary-200);
+    color: var(--color-neutral-800);
+}
+
+
+header {
+    ul {
+        padding: 1em 5%;
+        justify-content: flex-end;
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        max-width: 1400px;
+        margin: auto;
+
+        li {
+            a {
+                color: var(--color-neutral-800);
+                text-decoration: none;
+                font-size: 17px;
+            }
+        }
+    }
+
+    nav {
+        background-color: var(--color-primary-100);
+        padding: .5em 5%;
+
+        ul {
+            justify-content: space-between;
+            padding: 0.5rem 0;
+
+            li {
+                display: none;
+                align-self: center;
+
+                @media (min-width: 1000px) {
+                    display: block;
+
+                }
+            }
+
+            li:first-child {
+                display: block;
+            }
+
+            li:last-child {
+                display: block;
+
+                @media (min-width: 1000px) {
+                    display: none;
+                }
+            }
+
+        }
+    }
+
+}
+
+
+.nav-link {
+    position: relative;
+
+    &:hover {
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            transform: scaleX(1);
+            transition: .3s ease;
+
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        height: 2px;
+        width: 0%;
+        background: currentColor;
+        transition: .3s ease;
+    }
+}
+
+.primary-button {
+    background-color: var(--color-primary-600);
+    padding: .75rem 1.25rem;
+    border-radius: var(--button-radius);
+    border: solid 1.5px var(--color-neutral-800);
+    transition: .2s ease;
+
+    &:hover {
+        background-color: var(--color-neutral-800);
+        color: var(--color-primary-200);
+        border: solid 1.5px var(--color-accent-100);
+    }
+}
