@@ -74,6 +74,53 @@ app.get('/talent-awards', async function (request, response) {
    })
 })
 
+app.get('/talent-awards/:year', async function (request, response) {
+   const awardsResponse = await fetch(apiURL + 'nominations')
+   const awardsResponseJSON = await awardsResponse.json()
+   response.render('talent-awards-year.liquid', {
+      nominations: awardsResponseJSON.data,
+      path: request.path
+   })
+})
+
+
+
+app.get('/talent-awards/:year/:name', async function (request, response) {
+
+   // uncomment wanneer api het doet
+   // const candidateParams = new URLSearchParams( {
+   //    'filter[title]': request.params.name
+   // })
+   // const candidateResponse = await fetch(apiURL + 'nominations?' + candidateParams)
+   // const candidateResponseJSON = await candidateResponse.json()
+
+   // fake api data
+   const fakeData = [
+      {
+         id: 1,
+         body: '<p>Mijn naam is Rhod&eacute; Treur, 22 jaar oud, woon in Woudenberg en ik volg de Ad-opleiding Human Resource Management aan de Hogeschool Utrecht. Momenteel zit ik in het tweede jaar van deze Ad-opleiding en ben ik bezig met mijn eindstage bij Timon jeugd- en (jong)volwassenenzorg. In mijn vrije tijd werk ik als douanedeclarant bij een transportbedrijf en sport ik graag. &nbsp;<br>&nbsp;<br>Ik heb voor een Ad-opleiding gekozen, omdat je hier de kennis en vaardigheden die je opdoet, direct in de praktijk kan brengen door middel van projecten. Ook is er in de opleiding veel aandacht voor je persoonlijke ontwikkeling. Daarnaast vind ik het een voordeel dat het een tweejarige hbo-opleiding is, met de mogelijkheid om door te stromen in de bachelorvariant. &nbsp;<br>&nbsp;<br>Mijn keuze voor Human Resource Management komt voort uit de wens om het menselijke en het zakelijke aspect te combineren. Ik zie het als een uitdaging om medewerkers op de beste manier in te zetten binnen een organisatie, zodat zij op een plek zitten waar ze gelukkig zijn en waar hun talenten het beste uitkomen. Binnen de opleiding vraag ik actief om feedback van zowel medestudenten als docenten. Aan de hand daarvan reflecteer ik op mijn denken en handelen en stel ik doelen op die bijdragen aan mijn professionele ontwikkeling. &nbsp;<br>&nbsp;<br>Na het afronden van mijn Ad-opleiding zie ik mijzelf doorstromen in de deeltijdvariant van de bachelor. Hierdoor kan ik mijn kennis en vaardigheden dagelijks toepassen in de praktijk en kan ik mij blijven ontwikkelen in de rol als HR-officer.&nbsp;</p>',
+         education_variant: 'Voltijd',
+         previous_course: " mbo bol",
+         course: "Ad Human Resource Management (HRM)",
+         institution: "Hogeschool Utrecht ",
+         header: "nominatie",
+         slug: 'rhode-treur',
+         title: "Rhodé Treur",
+         date: "2024-01-11",
+         profile_picture: "383622d7-ed2f-4e84-8c0a-9476c5c53826",
+         year: 2026
+      }
+   ]
+      const candidate = fakeData.find(c => c.slug === request.params.name)
+
+   response.render('talent-candidate.liquid', {
+      // uncomment wanneer api het doet
+      // candidate: candidateResponseJSON.data[0],
+      candidate: candidate,
+      year: request.params.year
+   })
+})
+
 
 app.use((request, response, next) => {
    //   response.status(404).send("Sorry can't find that!")
@@ -82,15 +129,7 @@ app.use((request, response, next) => {
 })
 
 
-app.get(/.*fly$/, (req, res) => {
-   res.send('fakka')
-})
-
 // alle pagina's
-
-app.get('/talent-awards/:name', async function (request, response) {
-   response.render('talent-candidate.liquid')
-})
 
 app.get('/over-ons', async function (request, response) {
    response.render('over-ons.liquid')
