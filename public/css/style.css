@@ -8,6 +8,23 @@ body {
     color: var(--color-neutral-800);
 }
 
+.active{
+    a{
+
+               &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            transform: scaleX(1);
+            transition: .3s ease;
+
+        }
+    }
+}
 
 header {
     ul {

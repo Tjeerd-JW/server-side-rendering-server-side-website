@@ -22,7 +22,12 @@
           <li>{% include "./partials/link.liquid", link: '#', text: "Home", style: 'nav-link' %}</li>
           <li>{% include "./partials/link.liquid", link: '#', text: "Over Ad's", style: 'nav-link' %}</li>
           <li>{% include "./partials/link.liquid", link: '#', text: "Publicaties", style: 'nav-link' %}</li>
-          <li>{% include "./partials/link.liquid", link: '/talent-awards', text: "Talent Award", style: 'nav-link' %}</li>
+          <li
+            class="{% if  path  == '/talent-awards' %}
+            active
+          {% endif %}" 
+          > 
+          {% include "./partials/link.liquid", link: '/talent-awards', text: "Talent Award", style: 'nav-link' %}</li>
           <li>{% include "./partials/link.liquid", link: '#', text: "Nieuws", style: 'nav-link' %}</li>
           <li>{% include "./partials/link.liquid", link: '#', text: "kom naar Ad-dag ", style: 'primary-button' %}</li>
           <li><button>Hamburger</button></li>

@@ -41,17 +41,17 @@ app.set('views', './views')
 
 // Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get('/', async function (request, response) {
-  // Render index.liquid uit de Views map
-  // Geef hier eventueel data aan mee
-  response.render('index.liquid')
+   // Render index.liquid uit de Views map
+   // Geef hier eventueel data aan mee
+   response.render('index.liquid')
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
 app.post('/', async function (request, response) {
-  // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
-  // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
-  response.redirect(303, '/')
+   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
+   // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
+   response.redirect(303, '/')
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
@@ -60,23 +60,78 @@ app.set('port', process.env.PORT || 8000)
 
 // Start Express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
-  // Toon een bericht in de console en geef het poortnummer door
-  console.log(`Application started on http://localhost:${app.get('port')}`)
+   // Toon een bericht in de console en geef het poortnummer door
+   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
 
 
 app.get('/talent-awards', async function (request, response) {
-
-
-  const awardsResponse = await fetch(apiURL + 'nominations')
-  const awardsResponseJSON = await awardsResponse.json()
-  console.log(awardsResponseJSON)
-console.log('test')
-  response.render('talent-awards.liquid',{
-    nominations: awardsResponseJSON.data
-  })
+   const awardsResponse = await fetch(apiURL + 'nominations')
+   const awardsResponseJSON = await awardsResponse.json()
+   response.render('talent-awards.liquid', {
+      nominations: awardsResponseJSON.data,
+      path: request.path
+   })
 })
 
+
+app.use((request, response, next) => {
+   //   response.status(404).send("Sorry can't find that!")
+   response.render('404.liquid')
+
+})
+
+
+app.get(/.*fly$/, (req, res) => {
+   res.send('fakka')
+})
+
+// alle pagina's
+
 app.get('/talent-awards/:name', async function (request, response) {
-  response.render('talent-candidate.liquid')
+   response.render('talent-candidate.liquid')
+})
+
+app.get('/over-ons', async function (request, response) {
+   response.render('over-ons.liquid')
+})
+
+app.get('/contact', async function (request, response) {
+   response.render('contact.liquid')
+})
+
+app.get('/over-ad', async function (request, response) {
+   response.render('over-ad.liquid')
+})
+
+app.get('/over-ad/faq', async function (request, response) {
+   response.render('faq.liquid')
+})
+
+app.get('/nieuws', async function (request, response) {
+   response.render('news.liquid')
+})
+
+app.get('/nieuws/:title', async function (request, response) {
+   response.render('news-article.liquid')
+})
+
+app.get('/publicaties', async function (request, response) {
+   response.render('publicaties.liquid')
+})
+
+app.get('/publicatie/:title', async function (request, response) {
+   response.render('publicatie.liquid')
+})
+
+app.get('/lado', async function (request, response) {
+   response.render('lado.liquid')
+})
+
+app.get('/events', async function (request, response) {
+   response.render('events.liquid')
+})
+
+app.get('/events/:name', async function (request, response) {
+   response.render('events.liquid')
 })

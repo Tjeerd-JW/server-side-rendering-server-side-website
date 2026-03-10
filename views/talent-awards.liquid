@@ -1,22 +1,19 @@
-{% render 'partials/head.liquid', title: 'awards' %}
+{% render 'partials/head.liquid', title: 'awards', path: path  %}
 
-{% include 'partials/article.liquid', style:'banner' %}
+{% include 'partials/article.liquid', style: 'banner' %}
 
-{% include 'partials/article.liquid', style:'img-left' %}
-
-
+{% include 'partials/article.liquid', style: 'img-left' %}
+{{path}}
 {% comment %} {{ nominations | json }} {% endcomment %}
-
 {% for nominee in nominations %}
-    <article>
-        <h2>
-            
-            {{nominee.title}}
-        </h2>
-        <p>
-            {{nominee.institution}}
-        </p>
-    </article>
+  <article>
+    <h2>
+      {{ nominee.title }}
+    </h2>
+    <p>
+      {{ nominee.institution }}
+    </p>
+  </article>
 {% endfor %}
 
 {% render 'partials/foot.liquid' %}
