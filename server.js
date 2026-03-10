@@ -103,6 +103,9 @@ app.get('/talent-awards/:year/:name', async function (request, response) {
          previous_course: " mbo bol",
          course: "Ad Human Resource Management (HRM)",
          institution: "Hogeschool Utrecht ",
+         institution_body: 'Thijs is een student op wie wij enorm trots zijn. Als SLBer heb ik Thijs leren kennen als een betrokken, bescheiden en zeer leergierige Ad-professional, die zijn vakmanschap vooral laat zien door zijn houding en handelen, en niet door zichzelf op de voorgrond te plaatsen. Voor een project in leerjaar 1 nam hij hierbij het voortouw om op zijn stage een preventieve activiteit met Alpaca’s te regelen voor cliënten, wat een groot succes was! In samenwerking met medestudenten, docenten en het werkveld is Thijs respectvol, betrouwbaar en proactief.Hij neemt verantwoordelijkheid, werkt zelfstandig en denkt actief mee over oplossingen voor praktijkvraagstukken. Zijn integriteit is hierin opvallend: Thijs oordeelt niet en blijft altijd zorgvuldig in hoe hij over anderen spreekt. Deze houding is van grote waarde in het werken met de complexe doelgroep, die vaak te maken krijgt met vooroordelen en stigma.Thijs benadert cliënten consequent oordeelloos en mensgericht. Wat Thijs daarnaast onderscheidt, is zijn sterk lerend vermogen.Hij reflecteert eerlijk op zijn eigen handelen en neemt regie over zijn ontwikkeling en vervolgstappen als Ad- professional. Dat maakt hem in onze ogen een zeer terechte kandidaat voor de Ad Talent Award 2026, want als er al een prachtige prijs als deze gegeven mag worden aan een student binnen het werkveld van Zorg en Veiligheid, dan verdiend Thijs Kiens het wel. Fransien Hummel, SLBer bij opleiding Ad Zorg en Veiligheid, óók namens het gehele docententeam en de Academie) ',
+         external_stake_holder: 'Lisa van Zuilen, sociaal beheerder bij Cazas Wonen',
+         external_stake_holder_body: '“Thijs heeft alles op orde, beantwoordt vragen met een lach en is hulpvaardig. Vanaf de start van zijn stage bij sociaal beheer neemt hij zelf de verantwoordelijkheid voor zijn leerproces. Op dag 1 kreeg hij zijn spullen, de dag erna liep hij met iemand mee en op dag 3 heeft hij, op eigen initiatief, zelfstandig bewoners bezocht. Thijs legt makkelijk contact, hij is een verbinder. Aan het begin van de stage had hij een overleg met wijkagenten, stelde zich voor als ‘de nieuwe directeur’ maar uiteraard met een lach. Het ijs was direct gebroken. Een bewoner die 40 jaar bij Cazas woonde krijgt normaliter bezoek vanuit coöperatie, dat lukte echter niet overdag en dus maakte Thijs in de avond tijd vrij om langs te gaan. Of die keer dat hij kacheltjes verzamelde toen er een gaslek op de Eikenlaan was. Kortom; Thijs is van alle markten thuis.”',
          header: "nominatie",
          slug: 'rhode-treur',
          title: "Rhodé Treur",
@@ -111,7 +114,7 @@ app.get('/talent-awards/:year/:name', async function (request, response) {
          year: 2026
       }
    ]
-      const candidate = fakeData.find(c => c.slug === request.params.name)
+   const candidate = fakeData.find(c => c.slug === request.params.name)
 
    response.render('talent-candidate.liquid', {
       // uncomment wanneer api het doet
