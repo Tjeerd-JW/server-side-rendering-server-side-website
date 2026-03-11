@@ -8,25 +8,32 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/server-
 ## Inhoudsopgave
 
   * [Beschrijving](#beschrijving)
-  * [Gebruik](#gebruik)
   * [Kenmerken](#kenmerken)
   * [Installatie](#installatie)
   * [Bronnen](#bronnen)
   * [Licentie](#licentie)
 
 ## Beschrijving
-<!-- In de Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
 
-## Gebruik
-<!--Bij Gebruik staat hoe je project er uit ziet, hoe het werkt en wat je er mee kan. -->
+Ad Connect is een website om meer informatie te krijgen over AD's. Ik heb deze sprint tijd besteed aan de awards kandidaten pagina.
+Je kan hem [hier](https://server-side-rendering-server-side-website-2q4p.onrender.com/talent-awards/2026/rhode-treur) bekijken.
 
 ## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met Javascript gedaan en hoe? Misschien heb je een framwork of library gebruikt? -->
+
+Dit project is gemaakt met liquid en nodejs. Ik heb de pagina opgebouwd met partials zodat de blokken content hergebruikt kunnen worden tijdens de volgende sprint en er minder herhalende code is.
+Er word nog gebruik gemaakt van dummy data omdat de database nog niet klaar is met alle benodigde data.
 
 ## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+
+Om dit project op te starten volg je deze stappen
+
+1. clone het project lokaal
+2. installeer het project
+   ```bash
+   npm install
+3. start het project op
+   ```bash
+   npm run start
 
 ## Bronnen
 
